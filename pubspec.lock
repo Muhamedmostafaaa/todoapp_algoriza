@@ -64,6 +64,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
+  date_picker_timeline:
+    dependency: "direct main"
+    description:
+      name: date_picker_timeline
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.3"
   dbus:
     dependency: transitive
     description:
@@ -221,13 +228,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.0.3"
-  simple_gesture_detector:
-    dependency: transitive
+  rxdart:
+    dependency: "direct main"
     description:
-      name: simple_gesture_detector
+      name: rxdart
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.0"
+    version: "0.27.5"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -282,13 +289,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.0+2"
-  table_calendar:
-    dependency: "direct main"
-    description:
-      name: table_calendar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.6"
   term_glyph:
     dependency: transitive
     description:

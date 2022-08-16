@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:todoapp_algoriza/businesslogic/cubit/cubit.dart';
 import 'package:todoapp_algoriza/businesslogic/cubit/states.dart';
 import 'package:todoapp_algoriza/presentation/addtask/addtask_screen.dart';
@@ -37,7 +38,9 @@ class Boardscreen extends StatelessWidget {
                               fontSize: 24, fontWeight: FontWeight.bold)),
                       Spacer(),
                       InkWell(onTap: (){
+
                         Navigator.pushNamed(context, Schedulescreen.ROUTE_NAME);
+
                       },
                         child: Icon(
                           Icons.calendar_today_rounded,

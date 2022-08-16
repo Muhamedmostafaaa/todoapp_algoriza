@@ -38,9 +38,10 @@ dependencies:
   flutter_bloc: ^8.0.1
   intl: ^0.17.0
   sqflite: ^2.0.3
-  table_calendar: ^3.0.6
+  date_picker_timeline: ^1.2.3
   flutter_local_notifications: ^9.7.0
   timezone: ^0.8.0
+  rxdart: ^0.27.5
 
 dev_dependencies:
   flutter_test:

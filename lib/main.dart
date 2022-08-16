@@ -14,6 +14,7 @@ void main() {
   BlocOverrides.runZoned(
         () {
       runApp(myapp());
+
     },
     blocObserver: MyBlocObserver(),
   );
@@ -29,6 +30,8 @@ class myapp extends StatelessWidget {
     return BlocProvider<Appcubit>(create:(context)=> Appcubit()..createdatabase(),
       child: BlocConsumer<Appcubit,AppStates>(listener: (context,states){},
         builder: (context,states){
+        var cubit=BlocProvider.of<Appcubit>(context);
+
         return  MaterialApp(
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,

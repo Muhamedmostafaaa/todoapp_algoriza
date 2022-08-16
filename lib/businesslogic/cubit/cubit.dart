@@ -2,8 +2,11 @@ import 'dart:ffi';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:todoapp_algoriza/businesslogic/cubit/states.dart';
+import 'package:todoapp_algoriza/presentation/schedule/schedule_screen.dart';
+import 'package:todoapp_algoriza/services/local_notification.dart';
 
 class Appcubit extends Cubit<AppStates> {
   Appcubit() : super(AppInitialState());
@@ -14,16 +17,22 @@ class Appcubit extends Cubit<AppStates> {
   List<Map>uncompletedtasks=[];
   List<Map>favoritetasks=[];
   int currentindex=0;
-  var selectedday;
-  var focusedday;
-  List<Map>onselectedda=[];
+  String selectedday=DateFormat('dd-MM-yyy').format(DateTime.now()).toString();
+  List<Map>selectedaytodos=[];
+  late BuildContext context;
+ late final LocalNotificationService service;
 
- void changedaysstate(selectday,focuseday){
-   selectedday=selectday;
-   focusedday=focuseday;
-   emit(AppChangecalenderState());
- }
+
+var today=DateFormat('EEEE').format(DateTime.now());
+
+void init(){
+  service=LocalNotificationService();
+  service.intialize();
+  ListentoNotification();
+}
   void createdatabase() async {
+
+  init();
     database = await openDatabase('todo.db', version: 1,
         onCreate: (Database db, int version) async {
       // When creating the db, create the table
@@ -39,6 +48,7 @@ class Appcubit extends Cubit<AppStates> {
       print('database opened');
       getdatafromdatabase( database);
     });
+
   }
 
   void inserttodatabase(
@@ -70,16 +80,26 @@ class Appcubit extends Cubit<AppStates> {
     completedtasks=[];
     uncompletedtasks=[];
     favoritetasks=[];
+    selectedaytodos=[];
       database.rawQuery('SELECT * FROM tasks').then((value){
         alltasks=value;
+
         value.forEach((element) {
+          if(element['date']==selectedday){
+            selectedaytodos.add(element);
+            print('heloooo')
+            ;}
+
           if(element['status']=='complete'){
             completedtasks.add(element);
+
           }else if(element['status']=='favorite'){
             favoritetasks.add(element);
-          }else {
+          }
+          else {
             uncompletedtasks.add(element);
           }
+          print(selectedaytodos.length);
         });
       emit(AppGetdata());
     });
@@ -130,8 +150,20 @@ class Appcubit extends Cubit<AppStates> {
         ?.rawDelete('DELETE FROM tasks WHERE id = ?', [id]).then((value){
 
       emit(Appdeletestate());
-      getdatafromdatabase(database!);
+      getdatafromdatabase(database);
     });
 
   }
+
+  void ListentoNotification(){
+  service.onNotificationclick.stream.listen((event) {onNotificationListener;});
+  }
+  void onNotificationListener(String? payload,){
+  if(payload != null && payload.isNotEmpty){
+    Navigator.pushNamed(context, Schedulescreen.ROUTE_NAME);
+  }
+
+  }
 }
+
+
