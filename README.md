@@ -26,9 +26,9 @@ This app for scheduling todo's of the user is easily arranged by date and time s
 
 ## Screenshots
 
-![App Screenshot](https://i.postimg.cc/0jVRjdYC/2022-08-18-5.png) 
+![App Screenshot](https://i.postimg.cc/0jVRjdYC/2022-08-18-5.png) ![App Screenshot](https://i.postimg.cc/85HPdvd7/2022-08-18-11.png)
 
-  ![App Screenshot](https://i.postimg.cc/85HPdvd7/2022-08-18-11.png)
+  
 
   ![App Screenshot](https://i.postimg.cc/C1YbLjL5/2022-08-18-11.pngg)
 
