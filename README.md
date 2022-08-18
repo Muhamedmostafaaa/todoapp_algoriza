@@ -5,14 +5,7 @@ This app for scheduling todo's of the user is easily arranged by date and time s
 
 
 ## Packages
- * bloc: ^8.0.3
- * flutter_bloc: ^8.0.1
- * intl: ^0.17.0
- * sqflite: ^2.0.3
- * date_picker_timeline: ^1.2.3
-* flutter_local_notifications: ^9.7.0
-* timezone: ^0.8.0
-* rxdart: ^0.27.5
+ ![alt text](https://i.postimg.cc/K8p9jc1B/2022-08-18-14.png)
 ## Features
 
 - Light/dark mode toggle
